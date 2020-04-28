@@ -6,6 +6,8 @@ On first run or anytime the Docker image is modified, run `docker-compose up --b
 
 Load up `http://localhost/phpinfo.php` to check versions and what's configured.
 
+There are three containers included; `sites` which will house our installs, `mysql` which runs the database, and `phpmyadmin` for a little database gui if you don't want to use Sequel Pro.
+
 ## Usage
 
 Clone M-Pire repos inside `./installs`. Apache maps `./` to `/var/www` so when modifying vhosts, remember the path will be `/var/www/installs/<client-site>`.
@@ -19,6 +21,8 @@ Duplicate `vhost-example.conf` as `vhost.conf` to set up your own hosts as neede
 To add a new site, modify the `vhost.conf` and create a new VirtualHost block. For this to be active stop the M-Pire containers and run `docker-compose up --build -d`.
 
 To connect to the database from M-Pire, modify your db config to have `'host' => 'database'`. `database` is the name we gave our mysql container and it will connect to it. Yes, the naming is confusing.
+
+Feel free to change the ports as needed if anything conflicts with other local setups. You might need to configure some port mapping or just access the installs using the port.
 
 ### TODO
 
